@@ -1,0 +1,28 @@
+syntax = "proto3";
+
+import "google/protobuf/empty.proto";
+option go_package = "./proto";
+
+
+service Category {
+        rpc GetAllCategory(google.protobuf.Empty) returns (Categories){};
+        rpc Create(CreateCategory) returns (google.protobuf.Empty){};
+}
+
+message CategoryDetail {
+        int32 id = 1;
+        string name = 2;
+        int32 parent_id = 3;
+        bool is_parent = 4;
+        int32 sort = 5;
+}
+message Categories {
+        repeated CategoryDetail categories = 1;
+}
+
+message CreateCategory {
+        string name = 1;
+        int32 parent_id = 2;
+        bool is_parent = 3;
+        int32 sort = 4;
+}
